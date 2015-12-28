@@ -105,7 +105,7 @@ function checkid(str)
 		                                    die("Connection failed: " . $conn->connect_error);
 		                                } 
 
-		                                $sql = "SELECT * FROM segments";
+		                                $sql = "SELECT * FROM segment";
 
 		                                $result = $conn->query($sql);
 		                                $one = "<option value='";

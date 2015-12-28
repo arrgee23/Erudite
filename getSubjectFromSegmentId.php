@@ -18,7 +18,7 @@
 
 	
 	
-	$sql = "SELECT segmentsubject.id,subjects.name FROM segmentsubject JOIN subjects on subjects.id=segmentsubject.subjectId ". "WHERE segmentsubject.segmentId=".$segid;
+	$sql = "SELECT segmentsubject.id,subject.name FROM segmentsubject JOIN subject on subject.id=segmentsubject.subjectId ". "WHERE segmentsubject.segmentId=".$segid;
 	//echo $sql;
 
 	
