@@ -29,7 +29,7 @@
 	    while($row = $result->fetch_assoc()) {
 	    	//$var=$row["id"];
 	        //echo $var;
-	        echo "<input type='checkbox' name='chk".$count."'value='".$row["id"]."''>".$row["name"]."<br>";
+	        echo "<input type='checkbox' name='chk[]' value='".$row["id"]."''>".$row["name"]."<br>";
 	    	$count=$count+1;
 	    }
 	} else {
