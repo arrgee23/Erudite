@@ -31,7 +31,7 @@ function checkid(str)
 				//document.getElementById("email").value=xmlhttp.responseText;
 			}
 		  }
-	xmlhttp.open("GET","subject.php?id="+str,true);
+	xmlhttp.open("GET","getSubjectFromSegmentId.php?id="+str,true);
 	xmlhttp.send();
 }
 </script>
@@ -50,7 +50,7 @@ function checkid(str)
            <div class="message">
            </div>
          <!--<h2>Dynamic Pages................</h2>-->
-                 <form action="#" method="post" onsubmit="return validate_terms();">
+                 <form action="teacher_submit.php" method="get" onsubmit="return validate_terms();">
                     <table width="529" height="469" border="0" class="registration-table">
                         <tr>
                             <td width="210" class="label">Full Name »</td>
@@ -86,17 +86,63 @@ function checkid(str)
                             <td class="label">Subject Category »</td>
                            
                                 <td>
-	                                <select name="category" onchange="checkid(this.value);"><option value="1">Nursery Level</option><option value="2">Class I - VI</option><option value="3">Class VII - X</option><option value="4">Class XI-XII</option><option value="5">Engineering Entrance / IIT-JEE(Mains/Advanced)</option><option value="6">Medical Entrance / AIPMT</option><option value="7">Graduation Level</option><option value="8">GRE/ GMAT / TOEFL / IELTS</option><option value="9">CA / CS / ICWA</option><option value="10">MBA / BBA</option><option value="11">Computer / IT</option><option value="12">Engineering Subjects</option><option value="13">Spoken English</option><option value="14">Language</option><option value="15">Business Training</option><option value="16">Law / Judiciary</option><option value="17">Sports Training / Fitness</option><option value="18">Music</option><option value="19">Dance</option><option value="20">Hobby & Creativity</option><option value="21">B.Ed Training</option><option value="22">MBBS Subjects</option><option value="23">Competitive Exams</option>		                                </select>
+	                                <select name="category" onchange="checkid(this.value);">
+	                               
+	                                <!-- <option value="3">Class VII - X</option> -->
+
+	                                <?php
+		                                $one = "<option value='";
+		                                $three = "'>";
+		                                $five = "</option>";
+
+		                                $servername = "localhost";
+		                                $username = "root";
+		                                $password = "";
+		                                $dbname = "erudite";
+
+		                                // Create connection
+		                                $conn = new mysqli($servername, $username, $password,$dbname);
+
+		                                // Check connection
+		                                if ($conn->connect_error) {
+		                                    die("Connection failed: " . $conn->connect_error);
+		                                } 
+
+		                                $sql = "SELECT * FROM segments";
+
+		                                $result = $conn->query($sql);
+
+		                                if ($result->num_rows > 0) {
+		                                    // output data of each row
+		                                    while($row = $result->fetch_assoc()) {
+		                                    	$two=$row["id"];
+		                                    	$four=$row["name"];
+
+		                                        echo $one.$two.$three.$four.$five;
+		                                    }
+		                                } else {
+		                                    echo "0 results";
+		                                }	
+		                                $conn->close();
+
+
+
+	                                ?>
+	                                </select>
                             	</td>
                         </tr>
+                       
                         <tr>
                             <td class="label">Subjects »</td>
                             <td id="subject" class="label"><!--<input type="text" name="subject" class="text-box" required="required" />--> </td>
                         </tr>
+                        
                         <tr>
                             <td class="label">Qualification Details »</td>
                             <td><textarea name="qualify" cols="22" rows="5" ></textarea> </td>
                         </tr>
+                        
+
                         <tr>
                             <td class="label">Teaching Experience »</td>
                             <td><input type="text" name="teaching" class="text-box" required="required" /> </td>
@@ -117,10 +163,6 @@ function checkid(str)
                     </form>       
        </div>
       
-	<!-- end of sidebar -->    
-     <!-- end of content -->
-    
-    <div class="cleaner"></div>
 </div>
 
   <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
