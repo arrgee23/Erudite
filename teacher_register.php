@@ -117,8 +117,6 @@ function checkid(str)
                     </form>       
        </div>
       
-	<!-- end of sidebar -->    
-     <!-- end of content -->
     
     <div class="cleaner"></div>
 </div>
