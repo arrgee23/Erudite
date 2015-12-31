@@ -50,7 +50,7 @@ function checkid(str)
            <div class="message">
            </div>
          <!--<h2>Dynamic Pages................</h2>-->
-                 <form action="teacher_submit.php" method="get" onsubmit="return validate_terms();">
+                 <form action="teacher_submit.php" method="post" onsubmit="return validate_terms();">
                     <table width="529" height="469" border="0" class="registration-table">
                         <tr>
                             <td width="210" class="label">Full Name »</td>
@@ -105,11 +105,10 @@ function checkid(str)
 		                                    die("Connection failed: " . $conn->connect_error);
 		                                } 
 
-<<<<<<< HEAD
+
 		                                $sql = "SELECT * FROM segment";
-=======
-		                                $sql = "select * from segment";
->>>>>>> origin/master
+		                               
+
 
 		                                $result = $conn->query($sql);
 		                                $one = "<option value='";
