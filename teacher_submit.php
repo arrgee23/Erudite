@@ -24,7 +24,4 @@
 echo "<script>alert('Data stored successfully!')</script>";
 	$conn->close();
 	
-	
-	
-
 ?>
