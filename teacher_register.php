@@ -106,8 +106,7 @@ function checkid(str)
 		                                } 
 
 
-		                                $sql = "SELECT * FROM segment";
-		                               
+		                                $sql = "select * from segment";
 
 
 		                                $result = $conn->query($sql);
