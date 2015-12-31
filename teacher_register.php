@@ -105,11 +105,7 @@ function checkid(str)
 		                                    die("Connection failed: " . $conn->connect_error);
 		                                } 
 
-<<<<<<< HEAD
-		                                $sql = "SELECT * FROM segment";
-=======
 		                                $sql = "select * from segment";
->>>>>>> origin/master
 
 		                                $result = $conn->query($sql);
 		                                $one = "<option value='";
