@@ -1,16 +1,28 @@
 <?php
-error_reporting(E_ALL ^ E_DEPRECATED);
-$link=mysql_connect("localhost","root","")or die("can not connect");
-		mysql_select_db("erudite",$link) or die("can not select database");
-	$chk=$_POST['chk'];
-	
-	
-		for ($i=0; $i<sizeof(chk);$i++){
-		 	$query= "INSERT INTO admin (name) values('".$chk[$i]."')";
-			mysql_query($query,$link)or die(mysql_error());
-			}
-		mysql_close($link);
-		echo "<script>alert('Data stored successfully!')</script>";
-		
+	$servername = "localhost";
+	$username = "root";
+	$password = "";
+	$dbname = "erudite";
 
+	// Create connection
+	$conn = new mysqli($servername, $username, $password, $dbname);
+	// Check connection
+	if ($conn->connect_error) {
+	    die("Connection failed: " . $conn->connect_error);
+	}
+
+
+	$chk=$_POST['chk'];
+	for ($i=0; $i<sizeof(chk);$i++){
+	 	$sql= "INSERT INTO admin (name) values('".$chk[$i]."')";
+
+
+	 	if ($conn->query($sql) === TRUE) {
+	 	    echo "New record created successfully";
+	 	} else {
+	 	    echo "Error: " . $sql . "<br>" . $conn->error;
+	 	}
+	}
+
+	$conn->close();
 ?>
